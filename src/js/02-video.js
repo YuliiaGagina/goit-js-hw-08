@@ -17,13 +17,14 @@ localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 
 function setTimeOnVideo() {
     let saveTimeData = localStorage.getItem("videoplayer-current-time");
-  const  dataObj = JSON.parse(saveTimeData);
-    if (dataObj.seconds === null) {
+    const dataObj = JSON.parse(saveTimeData);
+    console.log(dataObj.seconds);
+    if (dataObj.seconds === null || dataObj.seconds === 0 ) {
         return;
     } else {
         player.setCurrentTime(dataObj.seconds).then(function(seconds) {
     
-}).catch(function(error) {
+    }).catch(function(error) {
     switch (null) {
         case 'RangeError':
             // the time was less than 0 or greater than the video’s duration
