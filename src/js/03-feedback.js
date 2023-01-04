@@ -9,16 +9,13 @@ if (localStorage.getItem('feedback-form-state')) {
 
 const fillUnputsInForm = () => {
     try {
-        const savedDataFromForm = localStorage.getItem("feedback-form-state");
-        savedData = JSON.parse(savedDataFromForm);
+        formData
         
-       
-        
-    if (savedData === null) {
+    if (formData === null) {
         return;
     }
-    for (const elem in savedData) {
-      formEl.elements[elem].value = savedData[elem];
+    for (const elem in formData) {
+      formEl.elements[elem].value = formData[elem];
     }
     } catch(err) {
         console.log(err);
