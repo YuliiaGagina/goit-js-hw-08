@@ -12,30 +12,27 @@ const player = new Player('vimeo-player', {
 const onPlay = function (data) {
 localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 }
+ let saveTimeData = localStorage.getItem("videoplayer-current-time");
+let dataObj = JSON.parse(saveTimeData);
+let time = dataObj.seconds;
 
 function setTimeOnVideo() {
-    let saveTimeData = localStorage.getItem("videoplayer-current-time");
-    let dataObj = JSON.parse(saveTimeData);
- 
-    if (dataObj.seconds === null || dataObj.seconds === 0 ) {
-        return;
-    } else {
-        player.setCurrentTime(dataObj.seconds).then(function(seconds) {
+    try {
+        time
+        if (time === null || time === 0 ) {
+    return;
+} 
+    player.setCurrentTime(time).then(function(seconds) {
     
-    }).catch(function(error) {
-    switch (null) {
-        case 'RangeError':
-            // the time was less than 0 or greater than the video’s duration
-            break;
-
-        default:
-            // some other error occurred
-            break;
+    });
+    } catch(err) {
+        console.log(err);
     }
-});
+   
+
     }
 
-}
+
 
 setTimeOnVideo();
 player.on('timeupdate', throttle(onPlay, 1000));
