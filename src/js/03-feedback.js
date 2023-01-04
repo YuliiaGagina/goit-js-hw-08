@@ -20,8 +20,8 @@ const fillUnputsInForm = () => {
     for (const elem in savedData) {
       formEl.elements[elem].value = savedData[elem];
     }
-    } catch {
-        console.log(error);
+    } catch(err) {
+        console.log(err);
     }
    
 }
