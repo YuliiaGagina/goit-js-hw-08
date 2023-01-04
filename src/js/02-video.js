@@ -10,15 +10,13 @@ const player = new Player('vimeo-player', {
 //     console.log('played the video!');
 // });
 const onPlay = function (data) {
-  
 localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
-
 }
 
 function setTimeOnVideo() {
     let saveTimeData = localStorage.getItem("videoplayer-current-time");
-    const dataObj = JSON.parse(saveTimeData);
-    console.log(dataObj.seconds);
+    let dataObj = JSON.parse(saveTimeData);
+ 
     if (dataObj.seconds === null || dataObj.seconds === 0 ) {
         return;
     } else {
