@@ -1,11 +1,19 @@
 
 const formEl = document.querySelector('.feedback-form');
 import throttle from 'lodash.throttle';
-const formData = {};
+let formData = {};
+if (localStorage.getItem('feedback-form-state')) {
+  formData = JSON.parse(localStorage.getItem('feedback-form-state'));
+  console.log(formData);
+}
+
 const fillUnputsInForm = () => {
     try {
-         const savedDataFromForm = localStorage.getItem("feedback-form-state");
-    const savedData = JSON.parse(savedDataFromForm);
+        const savedDataFromForm = localStorage.getItem("feedback-form-state");
+        savedData = JSON.parse(savedDataFromForm);
+        
+       
+        
     if (savedData === null) {
         return;
     }

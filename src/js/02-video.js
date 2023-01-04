@@ -17,7 +17,7 @@ localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 
 function setTimeOnVideo() {
     let saveTimeData = localStorage.getItem("videoplayer-current-time");
-    dataObj = JSON.parse(saveTimeData);
+  const  dataObj = JSON.parse(saveTimeData);
     if (dataObj.secomds === null) {
         return;
     } else {
