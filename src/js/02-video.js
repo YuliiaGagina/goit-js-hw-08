@@ -12,7 +12,11 @@ const player = new Player('vimeo-player', {
 const onPlay = function (data) {
 localStorage.setItem("videoplayer-current-time", JSON.stringify(data));
 }
- let saveTimeData = localStorage.getItem("videoplayer-current-time");
+if (localStorage.getItem('videoplayer-current-time')) {
+  dataObj = JSON.parse(localStorage.getItem('videoplayer-current-time'));
+  console.log(formData);
+}
+let saveTimeData = localStorage.getItem("videoplayer-current-time");
 let dataObj = JSON.parse(saveTimeData);
 let time = dataObj.seconds;
 
