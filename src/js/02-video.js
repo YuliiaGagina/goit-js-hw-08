@@ -5,7 +5,7 @@ const player = new Player('vimeo-player', {
     id: 19231868,
     width: 640
 });
- const dataObj = JSON.parse(localStorage.getItem("videoplayer-current-time"));
+const dataObj = JSON.parse(localStorage.getItem("videoplayer-current-time")) || { "seconds": 0};
     
 player.setCurrentTime(dataObj.seconds);
 
